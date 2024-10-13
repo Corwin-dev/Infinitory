@@ -30,7 +30,8 @@ public class InfinitoryTexturedButtonWidget extends TexturedButtonWidget {
 	
 	@Override
 	public void renderButton(MatrixStack matrices, int mouseX, int mouseY, float delta) {
-	      RenderSystem.setShader(GameRenderer::getPositionTexShader);
+	      RenderSystem.disableBlend();
+              RenderSystem.setShader(GameRenderer::getPositionTexShader);
 	      RenderSystem.setShaderTexture(0, this.texture);
 	      int i = this.v;
 	      if (this.isHovered()) {
@@ -42,7 +43,7 @@ public class InfinitoryTexturedButtonWidget extends TexturedButtonWidget {
 	      if (this.isHovered()) {
 	         this.renderTooltip(matrices, mouseX, mouseY);
 	      }
-
+              RenderSystem.enableBlend();
 	   }
 
 }
